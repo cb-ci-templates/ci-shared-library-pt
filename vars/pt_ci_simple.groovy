@@ -105,7 +105,7 @@ pipeline {
                     stages {
                         stage("test") {
                             steps {
-                                sh "echo UnitTests"
+                                sh "echo SeleniumTests"
                             }
                         }
                     }
@@ -125,7 +125,7 @@ pipeline {
                     stages {
                         stage("test") {
                             steps {
-                                sh "echo IntegrationTests"
+                                sh "echo APITest"
                             }
                         }
                     }
@@ -145,7 +145,7 @@ pipeline {
                     stages {
                         stage("test") {
                             steps {
-                                sh "echo SmokeTests"
+                                sh "echo CocumberTest"
                             }
                         }
                     }
@@ -165,7 +165,7 @@ pipeline {
                     stages {
                         stage("test") {
                             steps {
-                                sh "echo AccessibilityTests"
+                                sh "echo ToscaTest"
                             }
                         }
                     }
