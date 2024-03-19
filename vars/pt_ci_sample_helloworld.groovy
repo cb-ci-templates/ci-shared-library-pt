@@ -22,7 +22,15 @@ def call(Map pipelineParams) {
                 steps {
                     echo "Greetings: ${params.greeting}"
                     echo "${pipelineParams.app}"
-                    sh "echo key1 ${env.key1}"
+                    echo "key1 ${env.key1}"
+                    sleep 10
+                    checkpoint 'Hello'
+                }
+            }
+            stage('Say By') {
+                steps {
+                    echo "By: ${params.greeting}"
+                    checkpoint 'By'
                 }
             }
         }
