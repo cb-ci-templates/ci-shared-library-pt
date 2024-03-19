@@ -8,7 +8,7 @@ def call(Map pipelineParams) {
         stages {
             stage('Say Hello') {
                 steps {
-                    helloWorld "${pipelineParams.firstName} ${pipelineParams.lastName}"
+                    pt_helloWorld "${pipelineParams.firstName} ${pipelineParams.lastName}"
                     sleep 10
                     checkpoint 'Hello'
                 }
