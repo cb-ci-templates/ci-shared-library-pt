@@ -12,18 +12,11 @@ def call(Map pipelineParams) {
                     sleep 10
                 }
             }
-            stage("Checkpoint") {
-                agent none //running outside of any node or workspace
-                steps {
-                    checkpoint 'Completed Build'
-                }
-            }
             stage('Say By') {
                 steps {
                     echo "By: ${pipelineParams.firstName}, ${pipelineParams.lastName}"
                  }
             }
-
         }
     }
 }
