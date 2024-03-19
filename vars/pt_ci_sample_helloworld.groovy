@@ -5,31 +5,17 @@ def call(Map pipelineParams) {
                 yaml libraryResource("podtemplates/${pipelineParams.k8_agent_yaml}")
             }
         }
-        parameters {
-            string(name: 'greeting', defaultValue: "${pipelineParams.param_greetings}",
-                    description: 'How should I greet the world?')
-        }
         stages {
-            stage("Init") {
-                steps {
-                    //Init from yamnl
-                    // init "./ci-config.yaml"
-                    //Init from marker properties with defaults   (here ansible tower f.e)
-                    init('ci-config.properties', pipelineParams)
-                }
-            }
             stage('Say Hello') {
                 steps {
-                    echo "Greetings: ${params.greeting}"
-                    echo "${pipelineParams.app}"
-                    echo "key1 ${env.key1}"
+                    helloWorld "${pipelineParams.firstName} ${pipelineParams.lastName}"
                     sleep 10
                     checkpoint 'Hello'
                 }
             }
             stage('Say By') {
                 steps {
-                    echo "By: ${params.greeting}"
+                    echo "By: ${pipelineParams.firstName} ${pipelineParams.lastName}"
                     checkpoint 'By'
                 }
             }
