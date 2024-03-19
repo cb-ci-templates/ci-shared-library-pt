@@ -12,6 +12,7 @@ def call(Map pipelineParams) {
                     pt_helloWorld(pipelineParams.firstName,pipelineParams.lastName)
                     sleep 10
                 }
+                checkpoint 'hello'
             }
             stage('Say By') {
                 agent {
@@ -22,8 +23,9 @@ def call(Map pipelineParams) {
                 steps {
                     echo "By: ${pipelineParams.firstName}, ${pipelineParams.lastName}"
                  }
+                checkpoint 'By'
             }
-            checkpoint 'By'
+
         }
     }
 }
