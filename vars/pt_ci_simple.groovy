@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage("Init") {
             steps {
-                init ()
+                init pipelineParams
             }
         }
         stage('Build') {
