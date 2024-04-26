@@ -17,22 +17,7 @@ pipeline {
     stages {
         stage("Init") {
             steps {
-                //Init from yaml. It uses the `readYaml` step which can not use defaults
-                //initFromYaml "./ci-config.yaml"
-
-                validate(pipelineParams)
-                //init from properties with defaults  (here "default_key1" f.e)
-                init(pipelineParams)
-
-                echo """###### SAMPLE OUTPUT OF VARS#####
-                    Pipeline parameter: ${params.greeting}
-                    Pipeline Template parameter: ${pipelineParams.app}
-                    default_key1 ${env.default_key1}
-                    branch_key1 ${env.key1}
-                    property DEPLOY from default config:${env.deploy}
-                    ###### END SAMPLE OUTPUT OF VARS#####
-                    """
-
+                init ()
             }
         }
         stage('Build') {
